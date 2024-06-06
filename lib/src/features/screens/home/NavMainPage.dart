@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:psycho_test_app/src/core/resources/app_colors.dart';
@@ -9,13 +8,9 @@ import 'package:psycho_test_app/src/features/app/pages/DiaryPage.dart';
 import 'package:psycho_test_app/src/features/app/pages/StatisticsPage.dart';
 import 'package:psycho_test_app/src/features/app/router/router.gr.dart';
 
-import 'package:flutter/material.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'package:flutter/material.dart';
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 
 import '../../../core/resources/nunito_text.dart';
 import '../../app/widgets/nav_widget.dart';

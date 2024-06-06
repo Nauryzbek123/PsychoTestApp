@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:psycho_test_app/src/core/resources/app_colors.dart';
 import 'package:psycho_test_app/src/core/resources/static_data.dart';
 import 'package:psycho_test_app/src/core/widgets/column_spacer.dart';
