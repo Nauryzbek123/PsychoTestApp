@@ -8,7 +8,8 @@ import '../../../core/widgets/drawable_line.dart';
 class PointerWidget extends StatelessWidget {
   final String leftText;
   final String rightText; 
-  const PointerWidget({super.key,required this.leftText,required this.rightText});
+  final void Function(double) onProgressChanged;
+  const PointerWidget({super.key,required this.leftText,required this.rightText, required this.onProgressChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +22,10 @@ class PointerWidget extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: Color(0xFFB6A1C0)
-                .withOpacity(0.11), // Adjust opacity for accuracy
-            offset: Offset(2, 4), // 2px to the right and 4px down
-            blurRadius: 10, // Blur radius of 10px
-            spreadRadius: 0, // Spread radius of 0px
+                .withOpacity(0.11), 
+            offset: Offset(2, 4), 
+            blurRadius: 10,
+            spreadRadius: 0, 
           ),
         ],
       ),
@@ -45,7 +46,7 @@ class PointerWidget extends StatelessWidget {
           Container(
             width: 317,
             height: 28,
-            child: DrawableLineWithCircle(),
+            child: DrawableLineWithCircle(onProgressChanged: onProgressChanged,),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

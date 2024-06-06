@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:psycho_test_app/src/core/resources/app_colors.dart';
 
 class CustomStyledTextField extends StatelessWidget {
-  const CustomStyledTextField({super.key});
+  const CustomStyledTextField({super.key,required this.controller});
+
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +24,7 @@ class CustomStyledTextField extends StatelessWidget {
         ],
       ),
       child: TextField(
+        controller: controller,
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.all(16),

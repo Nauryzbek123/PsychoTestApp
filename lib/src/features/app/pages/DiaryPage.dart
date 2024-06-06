@@ -23,6 +23,21 @@ class DiaryPage extends StatefulWidget {
 class _DiaryPageState extends State<DiaryPage> {
   int selectedIndex = -1;
   int selectedFeelingsIndex = -1;
+  double stressLevel = -1; 
+  double selfEsteem = -1; 
+  TextEditingController notesController = TextEditingController();
+
+  
+
+  void resetData() {
+    setState(() {
+      selectedIndex = -1;
+      selectedFeelingsIndex = -1;
+      stressLevel = 0.02;
+      selfEsteem = 0.02;
+      notesController.clear();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -103,6 +118,11 @@ class _DiaryPageState extends State<DiaryPage> {
             child: PointerWidget(
               leftText: 'Низкий',
               rightText: 'Высокий',
+              onProgressChanged: (progress) {
+                setState(() {
+                  stressLevel = (progress * 10).roundToDouble(); 
+                });
+              },
             ),
           ),
           Align(
@@ -118,9 +138,14 @@ class _DiaryPageState extends State<DiaryPage> {
             child: PointerWidget(
               leftText: 'Неуверенность',
               rightText: 'Уверенность',
+              onProgressChanged: (progress) {
+                setState(() {
+                  selfEsteem = (progress * 10).roundToDouble();
+                });
+              },
             ),
           ),
-          const  Align(
+          const Align(
             alignment: Alignment.centerLeft,
             child: Padding(
               padding: EdgeInsets.only(left: 15, top: 20),
@@ -131,13 +156,60 @@ class _DiaryPageState extends State<DiaryPage> {
           ColumnSpacer(1.5),
           Padding(
             padding: const EdgeInsets.only(left: 17),
-            child: CustomStyledTextField(),
-          ), 
+            child: CustomStyledTextField(
+              controller: notesController,
+            ),
+          ),
           ColumnSpacer(2),
           Padding(
             padding: const EdgeInsets.only(left: 20),
-            child: ButtonWidget(),
-          ), 
+            child: GestureDetector(
+                onTap: () {
+                  if (selectedIndex == -1 ||
+                      selectedFeelingsIndex == -1 ||
+                      stressLevel == -1 ||
+                      selfEsteem == -1 ||
+                      notesController.text.isEmpty) {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('Ошибка'),
+                          content: Text('Пожалуйста заполните все поля.'),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text('Ок'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  } else {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('Отлично'),
+                          content: Text('Данные успешно сохранены.'),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                                resetData();
+                              },
+                              child: Text('Ок'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  }
+                },
+                child: ButtonWidget()),
+          ),
           ColumnSpacer(2),
         ],
       ),

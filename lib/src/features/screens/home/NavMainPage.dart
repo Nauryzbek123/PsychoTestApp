@@ -32,7 +32,6 @@ class _NavMainPageState extends State<NavMainPage> {
 
   @override
   Widget build(BuildContext context) {
-    var locale = Locale('ru', 'RU');
     var formattedDate =
         DateFormat('d MMMM HH:mm', 'ru_RU').format(DateTime.now());
     return Scaffold(

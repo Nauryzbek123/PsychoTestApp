@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:psycho_test_app/src/core/resources/app_colors.dart';
 
 import '../resources/nunito_text.dart';

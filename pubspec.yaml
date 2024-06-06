@@ -39,6 +39,7 @@ dependencies:
   font_awesome_flutter: ^10.4.0
   auto_route: ^5.0.2
   flutter_svg: ^2.0.7
+  paged_vertical_calendar: ^1.1.8
 
 dev_dependencies:
   flutter_test:

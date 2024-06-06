@@ -25,7 +25,7 @@ class FeelingsWidget extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               color: Color(0xFFB6A1C0)
-                  .withOpacity(0.11), // Adjust opacity for accuracy
+                  .withOpacity(0.11),
               offset: Offset(2, 4),
               blurRadius: 10,
               spreadRadius: 0,
